@@ -1,0 +1,40 @@
+# setup
+setup: selflabel
+
+# ema
+use_ema: False
+
+# Threshold
+confidence_threshold: 0.99
+
+# Criterion
+criterion: confidence-cross-entropy
+criterion_kwargs:
+   apply_class_balancing: True
+
+# Model
+backbone: CustomResNet18
+model_kwargs:
+  low_dim: 64
+num_heads: 1
+
+# Dataset
+train_db_name: weak_A_matching
+val_db_name: weak_A_matching
+num_classes: 12
+
+# Transformations
+augmentation_strategy: None
+
+
+# Hyperparameters
+epochs: 10
+optimizer: adam
+optimizer_kwargs:
+   lr: 0.0001
+   weight_decay: 0.0001
+batch_size: 128
+num_workers: 1
+
+# Scheduler
+scheduler: constant

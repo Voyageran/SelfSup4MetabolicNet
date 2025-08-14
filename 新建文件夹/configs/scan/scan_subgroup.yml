@@ -1,0 +1,38 @@
+# setup
+setup: scan
+
+# Loss
+criterion: scan
+criterion_kwargs:
+   entropy_weight: 2.0 #5.0
+
+# Weight update
+update_cluster_head_only: False # False # Update full network in SCAN
+num_heads: 10
+
+# Model
+backbone: CustomResNet18 # DilatedConvResnet
+model_kwargs:
+  low_dim: 64
+
+# Dataset
+train_db_name: weak_A_matching # szwj_12groups_leaveout_2channels # szwj_subgroup
+val_db_name: weak_A_matching # szwj_12groups_leaveout_2channels #szwj_subgroup
+num_classes: 12
+num_neighbors: 5
+
+
+# Transformations
+augmentation_strategy: None
+
+# Hyperparameters
+optimizer: adam
+optimizer_kwargs:
+   lr: 0.001
+   weight_decay: 0.0001
+epochs: 40
+batch_size: 128
+num_workers: 1
+
+# Scheduler
+scheduler: constant
